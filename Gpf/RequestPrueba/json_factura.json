@@ -1,0 +1,164 @@
+{
+  "authentication":{"login":"s4l3sF0rc3S3rv1c3sC0rp0r4c10nGPF","seed":"2022-05-09T05:50-0500","nonce":"NzMwMTI2NjAwNTcxNzExODkyODE3NTY3MzI4NDAzMjc0NTAxMw\u003d\u003d","tranKey":"JYJeCs0x4UfBx5IdTVN5Po5+LAU\u003d"},
+  "company": 17,
+  "orderId": "3052022",
+  "user": "CESCUDERO",
+  "idUser": "3605407",
+  "businessDate": "2022-05-03T14:01:36+00:00",
+  "transactiondate": "2022-05-03T14:01:36+00:00",
+  "chain": "10",
+"emmitedDocument": "BILL",
+  "electronicDocument": true,
+  "startTxData": "2022--03T14:01:36+00:00",
+  "endTxData": "2022-05-03T14:01:36+00:00",
+  "correlationTX": "3922035276",
+  "localid": "1999",
+  "documentNumber": "14693541",
+  "specialTaxpayer": "02",
+  "currency":"USD",
+  "authorizationCode": "060521220131090008920800198930200010002895658032311",
+  "environment": "2",
+  "emissionType": "1",
+  "discountTotal":0.0,
+  "exempt":"N",
+  "base0": 0,
+  "base12": 100,
+  "iva": 12,
+  "state": "AUT",
+  "issuerRuc": "0919589630001",
+  "requiresAccounting": "SI",
+  "idTypeClient": "08",
+  "tip": 0.0,
+  "purchaseOrder": "F001",
+  "totalInvoiceCost": 50.0,
+  "totalInvoicePrice": 100.0,
+  "total": 112,
+  "affected": "3353",
+  "taxTotal": 12,
+  "untaxedTotal": 100,
+  "posNumber": "1",
+  "billUrl": "http://elb-difarma-backend-qa-23231996.us-east-1.elb.amazonaws.com:8080/MTDServices/document/download/byFDId/529708b7-e961-42be-8ea5-f17b21b1104d",
+"xmlUrl": "http://elb-difarma-backend-qa-23231996.us-east-1.elb.amazonaws.com:8080/MTDServices/document/download/byFDId/529708b7-e961-42be-8ea5-f17b21b1104d",
+  "client": {
+    "clientId": "1720811346",
+    "firstName": "SANTIAGO",
+    "secondName": "ELIAS",
+    "firstSurname": "RAMIREZ",
+    "secondSurname": "",
+    "cellphoneNumber": "593983614350",
+    "address": "Av. Cardenal de la Torre y Pasaje s23a",
+    "idComune": 0,
+    "idCity": 0,
+    "countryCode": 56,
+    "regionCode": 0,
+    "creationType": "",
+    "particularNumber": "",
+    "email": "snt.ramirez@gmail.com"
+  },
+
+
+  "payments": [
+    {
+      "payment": "CV",
+      "paymentMethod": "CONVENIOS",
+      "sequencer": "1",
+      "amount": 1,
+      "creditCardNumber": "************7522",
+      "interest": null,
+      "quota": "1",
+      "quotaType": null,
+      "authorizationType": "AUT",
+      "authorizationCode": "1245767200",
+      "expirationDate": null,
+      "clientOwnerDocument": "11111111-1",
+      "amountQuota": "3990"
+
+
+
+
+
+
+
+    },
+
+
+
+  
+    {
+      "payment": "P2P",
+      "paymentMethod": "TCR",
+      "sequencer": "1",
+      "amount": 3990,
+      "creditCardNumber": "************7522",
+      "interest": null,
+      "quota": "1",
+      "quotaType": null,
+      "authorizationType": "AUT",
+      "authorizationCode": "1245767200",
+      "expirationDate": null,
+      "clientOwnerDocument": "11111111-1",
+      "amountQuota": "3990"
+
+
+
+
+
+
+
+    }
+  ],
+
+
+ 
+  "products": [
+    {
+      "cashierRUT": "270479",
+      "sku": "279834",
+      "priceList": "1990",
+      "finalPrice": "3990",
+      "quantity": 1,
+      "digitRUTCashier": "2",
+      "idCashier": "53",
+      "barcode": "111111",
+      "points": "",
+      "sale": 100.71,
+      "ivaPercent": 12.0,
+      "unit": 1,
+      "discounts": [
+        {
+          "promotionId": "001",
+          "usedPoints": 0,
+          "amount": 1980,
+          "benefit": 3,
+          "convertion": "0",
+          "loyaltyDiscount": false
+        }
+      ]
+    },
+    {
+      "cashierRUT": "270479",
+      "sku": "279834",
+      "priceList": "1990",
+      "finalPrice": "3990",
+      "quantity": 2,
+      "digitRUTCashier": "2",
+      "idCashier": "53",
+      "barcode": "111111",
+      "points": "",
+      "sale": 100.11,
+      "ivaPercent": 12.0,
+      "unit": 1,
+      "discounts": [
+        {
+          "promotionId": "001",
+          "usedPoints": 0,
+          "amount": 1980,
+          "benefit": 3,
+          "convertion": "0",
+          "loyaltyDiscount": false
+        }
+      ]
+    }
+  ]
+
+}

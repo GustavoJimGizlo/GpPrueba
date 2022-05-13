@@ -1,0 +1,152 @@
+
+{
+  "company": 17,
+  "orderId": "1221111",
+  "user": "CESCUDERO",
+  "idUser": "3605407",
+  "businessDate": "2022-02-01T14:01:36+00:00",
+  "transactiondate": "2022-02-01T14:01:36+00:00",
+  "chain": "10",
+  "emmitedDocument": "CREDIT_NOTE_BILL",
+  "electronicDocument": true,
+  "startTxData": "2022-02-01T14:01:36+00:00",
+  "endTxData": "2022-02-01T14:01:36+00:00",
+  "correlationTX": "2022143476",
+  "correlativeAssociatedTX": "2022143470",
+  
+  "documentNumber": "14693541",
+  
+  "specialTaxpayer": "02",
+  "currency": "USD",
+  "authorizationCode": "2504239121090090919000019010200001002895658052311",
+  
+  "environment": "2",
+  "emissionType": "1",
+  "discountTotal": 0.00,
+  "untaxedTotal": 10,
+  "base0": 0,
+  "base12": 10,
+  "iva": 1.2,
+  "state": "AUT",
+  "issuerRuc": "0919589630001",
+  "requiresAccounting": "SI",
+  
+  "idTypeClient": "08",
+  "tip": 0.0,
+  "purchaseOrder": "F001",
+  "totalInvoiceCost": 0.0,
+  "totalInvoicePrice": 112.0,
+  "total": 11.2,
+  "affected": "3353",
+  "taxTotal": 1.2,
+  "exempt": "0",
+  "posNumber": "41",
+
+  "machineNumber": "41",
+    "billUrl": "http://elb-difarma-backend-qa-23231996.us-east-1.elb.amazonaws.com:8080/MTDServices/document/download/byFDId/529708b7-e961-42be-8ea5-f17b21b1104d",
+    "xmlUrl": "http://51.161.35.81:8001/latina_mail/static/description/Factura.xml",
+
+
+  
+  "client": {
+    "clientId": "1205795683",
+    "firstName": "NatQAFCV",
+    "firstSurname": "NuevoFCV",
+    "secondSurname": "",
+    "cellphoneNumber": "56998876543",
+    "address": "Avenida Providencia 1650, Providencia, Chile",
+    "idComune": 0,
+    "idCity": 0,
+    "countryCode": 56,
+    "regionCode": 0,
+    "creationType": "",
+	"particularNumber": "",
+    "email": "nataly.aranda@difarma2.cl"
+  },
+  "products": [
+    {
+	"cashierRUT": "270479",
+      "sku": "279834",
+      "priceList": "1990",
+      "finalPrice": "3990",
+      "quantity": 1,
+      "digitRUTCashier": "2",
+      "idCashier": "53",
+      "barcode": "111111",
+      "points": "",
+      "sale": 100.71,
+      "ivaPercent": 12.0,
+      "unit": 1,
+      "discounts": [
+        {
+          "promotionId": "001",
+          "usedPoints": 0,
+          "amount": 1980,
+          "benefit": 3,
+          "convertion": "0",
+          "loyaltyDiscount": false
+        }
+      ]
+
+    },
+    {
+	"cashierRUT": "270479",
+      "sku": "279834",
+      "priceList": "1990",
+      "finalPrice": "3990",
+      "quantity": 2,
+      "digitRUTCashier": "2",
+      "idCashier": "53",
+      "barcode": "111111",
+      "points": "",
+      "sale": 100.11,
+      "ivaPercent": 12.0,
+      "unit": 1,
+      "discounts": [
+        {
+          "promotionId": "001",
+          "usedPoints": 0,
+          "amount": 1980,
+          "benefit": 3,
+          "convertion": "0",
+          "loyaltyDiscount": false
+        }
+      ]
+
+    }
+  ],
+
+  "payments": [
+    {
+      "payment": "CV",
+      "paymentMethod": "CONVENIOS",
+      "sequencer": "1",
+      "amount": 1,
+      "creditCardNumber": "************7522",
+      "interest": null,
+      "quota": "1",
+      "quotaType": null,
+      "authorizationType": "AUT",
+      "authorizationCode": "1245767200",
+      "expirationDate": null,
+      "clientOwnerDocument": "11111111-1",
+      "amountQuota": "3990"
+    },
+
+    {
+      "payment": "P2P",
+      "paymentMethod": "TCR",
+      "sequencer": "1",
+      "amount": 3990,
+      "creditCardNumber": "************7522",
+      "interest": null,
+      "quota": "1",
+      "quotaType": null,
+      "authorizationType": "AUT",
+      "authorizationCode": "1245767200",
+      "expirationDate": null,
+      "clientOwnerDocument": "11111111-1",
+      "amountQuota": "3990"
+    }
+  ]
+}

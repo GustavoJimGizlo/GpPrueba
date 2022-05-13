@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Reporte MDV</title>
+
+<script type="text/javascript" src="js/jquery.js" charset="utf-8"></script>
+<link href="css/ui.jqgrid.css" rel="stylesheet" type="text/css">
+<link href="css/themes/base/jquery.ui.all.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.9.0.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/i18n/grid.locale-es.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery-ui.js" charset="utf-8"></script>
+<script type="text/javascript" src="js/jquery.ui.core.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="js/jqGrid/js/jquery.jqGrid.min.js"></script>
+<script type="text/javascript" src="js/jqGrid/js/i18n/grid.locale-es.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+$().ready(function() {
+	
+	$('.fecha ').datepicker({
+		dateFormat: 'yy-mm-dd',
+		changeMonth: true,
+		changeYear: true,
+		maxDate: 0
+	});
+	
+	$("#gridResultado").jqGrid({
+		 url: "resources/GPFResource/mdv",     
+	     datatype: "json",
+	     mtype: "get",
+	     colNames: ["FARMACIA","F. ULTIMO MOV.","V. VITALCARD","V. PERFUMERIA","V. ESPECIALIDAD","AYUDA COMUNITARIA","V. SERVICIOS"
+	                //,"TOTAL TRX."
+	                ,"TOTAL"],
+	     colModel: [				 
+				 {name:'farmacia', width:250, align: "left", sortable: false},
+				 {name:'fechaUltimoMvimiento', width:155, align: "right", sortable: false},
+				 {name:'valorVitalCard', width:100, align: "right", sortable: false},
+				 {name:'valorPerfumeria', width:100, align: "right", sortable: false},
+				 {name:'valorEspecialidad', width:100, align: "right", sortable: false},
+				 {name:'valorAyudaComunitaria', width:100, align: "right", sortable: false},
+				 {name:'valorServicios', width:100, align: "right", sortable: false},
+				 //{name:'totalTransacciones', width:100, align: "right", sortable: false},
+				 {name:'total', width:100, align: "right", sortable: false}
+	      ],
+	     height: "600",
+	     width: "1200",         
+	     caption: "",          
+	     viewrecords: true,
+	     rowNum: 200,
+	     //multiselect: true,	          
+	     rownumbers: false,
+	     shrinkToFit: false,     
+	     toolbar: [true,"top"]                  
+	   });
+	
+	$('#buscarMDV').click(function(){
+		cargarJQGrid();
+	});
+	
+});
+function cargarJQGrid(){
+	  jQuery("#gridResultado").jqGrid('setGridParam',{url:"/WebApplicationCorporacionGPF/resources/GPFResource/mdv?"+
+		  "fechaDesde="+$('#txtFechaDesde').val()+"&fechaHasta="+$('#txtFechaDesde').val()}).trigger("reloadGrid");  
+	  //jQuery('#gridResultado').jqGrid('setSelection', '1000');
+}
+
+function verificarDosFechas(fechaDesde,elementoCalcula,mensajeFecha,operacion){
+	 var cabeceraMsg;
+	     var fechaCalculo=$(elementoCalcula).val();
+	 var fechaCalc=crearDateJs(fechaCalculo);
+	 var fechaNac=crearDateJs(fechaDesde);
+	 var resultado;
+	 if(operacion==">="){
+		 resultado=compararMayorIgual(fechaCalc,fechaNac);
+		 cabeceraMsg="La fecha ingresada es mayor o igual que ";
+	 }else if(operacion!="<="){
+		 resultado=compararMenorIgual(fechaCalc,fechaNac);
+		 cabeceraMsg="La fecha ingresada es menor  que ";
+	 }else{
+		 resultado=compararMenor(fechaCalc,fechaNac);
+		 cabeceraMsg="La fecha ingresada es menor o igual que ";
+	 }
+	 if(!resultado){
+	    alert(cabeceraMsg+mensajeFecha);
+		$(elementoCalcula).val('');
+	    return false;
+	 }
+	 return true;
+}
+function crearDateJs(fechaDato){
+		var fechaNacArray = fechaDato.split("-"); 
+	var anyo = parseInt(fechaNacArray [0],10);
+	var mes = parseInt(fechaNacArray [1],10);
+	var dia = parseInt(fechaNacArray [2],10);
+	var fecha=new Date();
+    fecha.setFullYear(anyo,mes-1,dia);
+	return fecha;
+}
+function compararMenor(fecha1,fecha2){
+	 if(fecha1<fecha2)
+		 return false;
+	 return true;
+	 
+}
+function compararMayorIgual(fecha1,fecha2){
+	 if(fecha1>=fecha2)
+		 return false;
+	 return true;		 
+}
+function compararMenorIgual(fecha1,fecha2){
+	 if(fecha1<=fecha2)
+		 return false;
+	 return true;
+}
+</script>
+<style type="text/css">
+	body {
+	    font-family: "Trebuchet MS","Arial","Helvetica","Verdana","sans-serif";
+	    font-size: 62.5%;
+	}
+</style>
+</head>
+<body>
+<table>
+	 <tr><td>Fecha:</td>
+	 <td><input name="txtFechaDesde" style="width: 80px" class="fecha text ui-widget-content ui-corner-all" id="txtFechaDesde" /></td>
+<!-- 	 
+	 <td>Hasta:</td>
+	 <td><input name="txtFechaHasta" style="width: 80px" class="fecha text ui-widget-content ui-corner-all" id="txtFechaHasta" /></td>
+-->
+	 <td><input type="button" id="buscarMDV" value="Buscar"/> </td>
+	 </tr>
+</table>
+<div id="contenedorGrid">
+  <table id="gridResultado"></table>
+</div>
+</body>
+</html>

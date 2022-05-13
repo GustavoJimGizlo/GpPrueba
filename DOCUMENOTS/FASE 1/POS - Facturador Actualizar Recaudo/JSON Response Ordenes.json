@@ -1,0 +1,32 @@
+[
+  {
+    "correlationTX" : "000002903",
+    "connectionType" : 1,
+    "paymentType" : 1,
+    "uniqueNumberTrx" : "10254273",
+    "idHolder" : "1308781275",
+    "commerceCode" : 17,
+    "totalAmount" : 7.64,
+    "amount" : 6.82
+  },
+  {
+    "correlationTX" : "000002904",
+    "connectionType" : 1,
+    "paymentType" : 1,
+    "uniqueNumberTrx" : "10254274",
+    "idHolder" : "1308781275",
+    "commerceCode" : 17,
+    "totalAmount" : 7.64,
+    "amount" : 6.82
+  },
+  {
+    "correlationTX" : "000002905",
+    "connectionType" : 1,
+    "paymentType" : 1,
+    "uniqueNumberTrx" : "10254275",
+    "idHolder" : "1308781275",
+    "commerceCode" : 17,
+    "totalAmount" : 7.64,
+    "amount" : 6.82
+  }
+]

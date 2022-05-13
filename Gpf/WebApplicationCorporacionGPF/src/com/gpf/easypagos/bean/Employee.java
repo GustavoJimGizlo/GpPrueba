@@ -1,0 +1,66 @@
+package com.gpf.easypagos.bean;
+
+public class Employee
+{
+    private Integer id;
+    private String name;
+    private Integer age;
+    private String location;
+    
+     
+     
+    public Employee() {
+
+	}
+
+	public Employee(Integer id, String name, Integer age, String location) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.location = location;
+    }
+ 
+    //Setters and Getters will be added here
+ 
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", age=" + age
+                + ", location=" + location + "]";
+    }
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+    
+    
+     
+}

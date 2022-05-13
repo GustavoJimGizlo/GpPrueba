@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.corporaciongpf</groupId>
+  <artifactId>facturador-web</artifactId>
+  <version>2.0</version>
+  <packaging>war</packaging>
+
+  <name>facturador-web Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+  <dependencies>
+		<dependency>
+			<groupId>com.corporaciongpf</groupId>
+			<artifactId>facturador-adm</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.corporaciongpf</groupId>
+			<artifactId>facturador-ejb</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>		
+		
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>3.6.2.Final</version>
+            <scope>provided</scope>
+        </dependency>
+		<dependency>
+		    <groupId>joda-time</groupId>
+		    <artifactId>joda-time</artifactId>
+		    <version>2.10.14</version>
+		</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    
+	
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jackson-provider</artifactId>
+			<version>1.1.GA</version>
+		</dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Dependencies>deployment.facturador-ejb.jar,deployment.facturador-adm.jar</Dependencies>
+						</manifestEntries>
+					</archive>
+				</configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>	
+	
+

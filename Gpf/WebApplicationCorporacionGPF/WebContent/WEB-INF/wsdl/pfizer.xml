@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s2="http://fragua.pfizer.lms.com.mx/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://www.lms.com.mx/WebServices/Prepago" xmlns:tns="http://lms.com.mx/WebServices/PrepagoEcardVzla" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://lms.com.mx/WebServices/PrepagoEcardVzla">
+  <wsdl:types>
+    <s:schema targetNamespace="http://lms.com.mx/WebServices/PrepagoEcardVzla" elementFormDefault="qualified">
+      <s:import namespace="http://www.lms.com.mx/WebServices/Prepago"/>
+      <s:import namespace="http://fragua.pfizer.lms.com.mx/"/>
+      <s:element name="ProcesarCompra">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s1:Compra" maxOccurs="1" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcesarCompraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s1:Ticket" maxOccurs="1" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CerrarCompra">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s1:Token" maxOccurs="1" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CerrarCompraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s1:Comprobante" maxOccurs="1" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelarCompra">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s1:Token" maxOccurs="1" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelarCompraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s1:Comprobante" maxOccurs="1" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DevolverCompra">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s2:Devolucion" maxOccurs="1" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DevolverCompraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s1:TicketDevolucion" maxOccurs="1" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarDevolucion">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s2:ConsultaDevolucion" maxOccurs="1" minOccurs="0"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultarDevolucionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="ConsultarDevolucionResult" maxOccurs="1" minOccurs="0" type="tns:ArrayOfTicketConsultaDevolucion"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTicketConsultaDevolucion">
+        <s:sequence>
+          <s:element name="TicketConsultaDevolucion" maxOccurs="unbounded" minOccurs="0" type="s2:TicketConsultaDevolucion" nillable="true"/>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema targetNamespace="http://www.lms.com.mx/WebServices/Prepago" elementFormDefault="qualified">
+      <s:import namespace="http://fragua.pfizer.lms.com.mx/"/>
+      <s:element name="Compra" type="s1:Compra"/>
+      <s:complexType name="Compra">
+        <s:sequence>
+          <s:element name="Pedido" maxOccurs="unbounded" minOccurs="0" type="s1:Pedido"/>
+        </s:sequence>
+        <s:attribute name="Programa_intId" type="s:int" use="required"/>
+        <s:attribute name="Cadena_intId" type="s:int" use="required"/>
+        <s:attribute name="Sucursal_intId" type="s:int" use="required"/>
+        <s:attribute name="Terminal_intId" type="s:int" use="required"/>
+        <s:attribute name="UsuarioTicket_strId" type="s:string"/>
+        <s:attribute name="UsuarioCaptura_strId" type="s:string"/>
+        <s:attribute name="Tarjeta" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="Pedido">
+        <s:attribute name="SKU" type="s:string"/>
+        <s:attribute name="Cantidad" type="s:int" use="required"/>
+      </s:complexType>
+      <s:element name="Ticket" type="s1:Ticket"/>
+      <s:complexType name="Ticket">
+        <s:sequence>
+          <s:element name="Folio" maxOccurs="unbounded" minOccurs="0" type="s1:Folio"/>
+        </s:sequence>
+        <s:attribute name="Programa_intId" type="s:int" use="required"/>
+        <s:attribute name="TipoDato_ProgramaId" type="s:string"/>
+        <s:attribute name="ValidoProgramaId" type="s:boolean" use="required"/>
+        <s:attribute name="ExisteProgramaId" type="s:boolean" use="required"/>
+        <s:attribute name="ErrorProgramaId" type="s:string"/>
+        <s:attribute name="DescripcionErrorProgramaId" type="s:string"/>
+        <s:attribute name="Cadena_intId" type="s:int" use="required"/>
+        <s:attribute name="TipoDato_CadenaId" type="s:string"/>
+        <s:attribute name="ValidaCadenaId" type="s:boolean" use="required"/>
+        <s:attribute name="ExisteCadenaId" type="s:boolean" use="required"/>
+        <s:attribute name="ErrorCadenaId" type="s:string"/>
+        <s:attribute name="DescripcionErrorCadenaId" type="s:string"/>
+        <s:attribute name="Sucursal_intId" type="s:int" use="required"/>
+        <s:attribute name="TipoDato_SucursalId" type="s:string"/>
+        <s:attribute name="ValidaSucursalId" type="s:boolean" use="required"/>
+        <s:attribute name="ExisteSucursalId" type="s:boolean" use="required"/>
+        <s:attribute name="ErrorSucursalId" type="s:string"/>
+        <s:attribute name="DescripcionErrorSucursalId" type="s:string"/>
+        <s:attribute name="Terminal_intId" type="s:int" use="required"/>
+        <s:attribute name="TipoDato_TerminalId" type="s:string"/>
+        <s:attribute name="ValidaTerminalId" type="s:boolean" use="required"/>
+        <s:attribute name="ExisteTerminalId" type="s:boolean" use="required"/>
+        <s:attribute name="ErrorTerminalId" type="s:string"/>
+        <s:attribute name="DescripcionErrorTerminalId" type="s:string"/>
+        <s:attribute name="UsuarioTicket_strId" type="s:string"/>
+        <s:attribute name="TipoDato_UsuarioTicketId" type="s:string"/>
+        <s:attribute name="ValidaUsuarioTicketId" type="s:boolean" use="required"/>
+        <s:attribute name="ExisteUsuarioTicketId" type="s:boolean" use="required"/>
+        <s:attribute name="ErrorUsuarioTicketId" type="s:string"/>
+        <s:attribute name="DescripcionErrorUsuarioTicketId" type="s:string"/>
+        <s:attribute name="UsuarioCaptura_strId" type="s:string"/>
+        <s:attribute name="TipoDato_UsuarioCapturaId" type="s:string"/>
+        <s:attribute name="ValidaUsuarioCapturaId" type="s:boolean" use="required"/>
+        <s:attribute name="ExisteUsuarioCapturaId" type="s:boolean" use="required"/>
+        <s:attribute name="ErrorUsuarioCapturaId" type="s:string"/>
+        <s:attribute name="DescripcionErrorUsuarioCapturaId" type="s:string"/>
+        <s:attribute name="Tarjeta" type="s:string"/>
+        <s:attribute name="TipoDato_Tarjeta" type="s:string"/>
+        <s:attribute name="ValidaTarjeta" type="s:boolean" use="required"/>
+        <s:attribute name="ExisteTarjeta" type="s:boolean" use="required"/>
+        <s:attribute name="ErrorTarjeta" type="s:string"/>
+        <s:attribute name="DescripcionErrorTarjeta" type="s:string"/>
+        <s:attribute name="CotizacionId" type="s:string"/>
+        <s:attribute name="descripcionSKU" type="s:string"/>
+        <s:attribute name="NumeroCamposEncabezado" type="s:int" use="required"/>
+        <s:attribute name="NumeroCorrectosEncabezado" type="s:int" use="required"/>
+        <s:attribute name="NumeroErroresEncabezado" type="s:int" use="required"/>
+        <s:attribute name="NumerodePedidos" type="s:int" use="required"/>
+        <s:attribute name="NumeroCorrectoPedidos" type="s:int" use="required"/>
+        <s:attribute name="NumeroErronesPedidos" type="s:int" use="required"/>
+        <s:attribute name="CodigoExcepcion" type="s:int" use="required"/>
+        <s:attribute name="DescripcionExcepcion" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="Folio">
+        <s:attribute name="SKU" type="s:string"/>
+        <s:attribute name="ValidoSKU" type="s:boolean" use="required"/>
+        <s:attribute name="ExisteSKU" type="s:boolean" use="required"/>
+        <s:attribute name="ErrorSKU" type="s:string"/>
+        <s:attribute name="Compras" type="s:int" use="required"/>
+        <s:attribute name="Beneficios" type="s:int" use="required"/>
+        <s:attribute name="Sugeridos" type="s:int" use="required"/>
+      </s:complexType>
+      <s:element name="Token" type="s1:Token"/>
+      <s:complexType name="Token">
+        <s:attribute name="CotizacionId" type="s:string"/>
+        <s:attribute name="Tarjeta" type="s:string"/>
+        <s:attribute name="SKU" type="s:string"/>
+        <s:attribute name="Cantidad" type="s:string"/>
+      </s:complexType>
+      <s:element name="Comprobante" type="s1:Comprobante"/>
+      <s:complexType name="Comprobante">
+        <s:attribute name="CodigoError" type="s:string"/>
+        <s:attribute name="DescripcionError" type="s:string"/>
+        <s:attribute name="Llave" type="s:string"/>
+        <s:attribute name="Tarjeta" type="s:string"/>
+      </s:complexType>
+      <s:element name="TicketDevolucion" type="s1:TicketDevolucion"/>
+      <s:complexType name="TicketDevolucion">
+        <s:sequence>
+          <s:element name="Folio" maxOccurs="unbounded" minOccurs="0" type="s2:FolioDevolucion"/>
+        </s:sequence>
+        <s:attribute name="FechaMovDev" type="s:dateTime" use="required"/>
+        <s:attribute name="NumAutorizacion" type="s:int" use="required"/>
+        <s:attribute name="CodigoRespuesta" type="s:int" use="required"/>
+      </s:complexType>
+    </s:schema>
+    <s:schema targetNamespace="http://fragua.pfizer.lms.com.mx/" elementFormDefault="qualified">
+      <s:element name="Devolucion" type="s2:Devolucion"/>
+      <s:complexType name="Devolucion">
+        <s:sequence>
+          <s:element name="Pedido" maxOccurs="unbounded" minOccurs="0" type="s2:PedidoDevolucion"/>
+        </s:sequence>
+        <s:attribute name="Programa_intId" type="s:int" use="required"/>
+        <s:attribute name="Cadena_intId" type="s:int" use="required"/>
+        <s:attribute name="Sucursal_intId" type="s:int" use="required"/>
+        <s:attribute name="Terminal_intId" type="s:int" use="required"/>
+        <s:attribute name="Usuario_strId" type="s:string"/>
+        <s:attribute name="Tarjeta" type="s:string"/>
+        <s:attribute name="ReferTransactionDev_intId" type="s:long" use="required"/>
+        <s:attribute name="Cotizacion_strId" type="s:string"/>
+      </s:complexType>
+      <s:complexType name="PedidoDevolucion">
+        <s:attribute name="SKU" type="s:string"/>
+        <s:attribute name="Cantidad" type="s:int" use="required"/>
+        <s:attribute name="Beneficio" type="s:int" use="required"/>
+      </s:complexType>
+      <s:complexType name="FolioDevolucion">
+        <s:attribute name="SKU" type="s:string"/>
+        <s:attribute name="CodigoRespDev" type="s:int" use="required"/>
+        <s:attribute name="DescCodigoRespDev" type="s:string"/>
+      </s:complexType>
+      <s:element name="ConsultaDevolucion" type="s2:ConsultaDevolucion"/>
+      <s:complexType name="ConsultaDevolucion">
+        <s:attribute name="Programa_intId" type="s:int" use="required"/>
+        <s:attribute name="Cadena_intId" type="s:int" use="required"/>
+        <s:attribute name="Sucursal_intId" type="s:int" use="required"/>
+        <s:attribute name="Terminal_intId" type="s:int" use="required"/>
+        <s:attribute name="Usuario_strId" type="s:string"/>
+        <s:attribute name="Tarjeta" type="s:string"/>
+        <s:attribute name="Cotizacion_intId" type="s:string"/>
+        <s:attribute name="ReferTransactionDev_intId" type="s:long" use="required"/>
+      </s:complexType>
+      <s:complexType name="TicketConsultaDevolucion">
+        <s:sequence>
+          <s:element name="Folio" maxOccurs="1" minOccurs="0" type="s2:ArrayOfCotizacionDetalleConsultaDevolucion"/>
+        </s:sequence>
+        <s:attribute name="FechaMovDev" type="s:dateTime" use="required"/>
+        <s:attribute name="NumAutorizacion" type="s:int" use="required"/>
+        <s:attribute name="CodigoRespuesta" type="s:int" use="required"/>
+        <s:attribute name="Sucursal_intId" type="s:int" use="required"/>
+        <s:attribute name="ReferTransactionDev" type="s:long" use="required"/>
+      </s:complexType>
+      <s:complexType name="ArrayOfCotizacionDetalleConsultaDevolucion">
+        <s:sequence>
+          <s:element name="CotizacionDetalleConsultaDevolucion" maxOccurs="unbounded" minOccurs="0" type="s2:CotizacionDetalleConsultaDevolucion" nillable="true"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CotizacionDetalleConsultaDevolucion">
+        <s:attribute name="Presentacion_intSKU" type="s:string"/>
+        <s:attribute name="CodigoRespDevSKU" type="s:int" use="required"/>
+        <s:attribute name="DescCodigoRespDevSKU" type="s:string"/>
+        <s:attribute name="TipoMovimiento" type="s:string"/>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ProcesarCompraSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcesarCompra"/>
+  </wsdl:message>
+  <wsdl:message name="ProcesarCompraSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcesarCompraResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CerrarCompraSoapIn">
+    <wsdl:part name="parameters" element="tns:CerrarCompra"/>
+  </wsdl:message>
+  <wsdl:message name="CerrarCompraSoapOut">
+    <wsdl:part name="parameters" element="tns:CerrarCompraResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CancelarCompraSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelarCompra"/>
+  </wsdl:message>
+  <wsdl:message name="CancelarCompraSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelarCompraResponse"/>
+  </wsdl:message>
+  <wsdl:message name="DevolverCompraSoapIn">
+    <wsdl:part name="parameters" element="tns:DevolverCompra"/>
+  </wsdl:message>
+  <wsdl:message name="DevolverCompraSoapOut">
+    <wsdl:part name="parameters" element="tns:DevolverCompraResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultarDevolucionSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultarDevolucion"/>
+  </wsdl:message>
+  <wsdl:message name="ConsultarDevolucionSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultarDevolucionResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="WsEcardPrePagoSoap">
+    <wsdl:operation name="ProcesarCompra">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+      <wsdl:input message="tns:ProcesarCompraSoapIn"/>
+      <wsdl:output message="tns:ProcesarCompraSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CerrarCompra">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+      <wsdl:input message="tns:CerrarCompraSoapIn"/>
+      <wsdl:output message="tns:CerrarCompraSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCompra">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+      <wsdl:input message="tns:CancelarCompraSoapIn"/>
+      <wsdl:output message="tns:CancelarCompraSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="DevolverCompra">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+      <wsdl:input message="tns:DevolverCompraSoapIn"/>
+      <wsdl:output message="tns:DevolverCompraSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDevolucion">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+      <wsdl:input message="tns:ConsultarDevolucionSoapIn"/>
+      <wsdl:output message="tns:ConsultarDevolucionSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WsEcardPrePagoHttpGet"/>
+  <wsdl:portType name="WsEcardPrePagoHttpPost"/>
+  <wsdl:binding name="WsEcardPrePagoSoap" type="tns:WsEcardPrePagoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ProcesarCompra">
+      <soap:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/ProcesarCompra"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CerrarCompra">
+      <soap:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/CerrarCompra"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCompra">
+      <soap:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/CancelarCompra"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DevolverCompra">
+      <soap:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/DevolverCompra"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDevolucion">
+      <soap:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/ConsultarDevolucion"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WsEcardPrePagoSoap12" type="tns:WsEcardPrePagoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ProcesarCompra">
+      <soap12:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/ProcesarCompra"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CerrarCompra">
+      <soap12:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/CerrarCompra"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCompra">
+      <soap12:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/CancelarCompra"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DevolverCompra">
+      <soap12:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/DevolverCompra"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultarDevolucion">
+      <soap12:operation style="document" soapAction="http://lms.com.mx/WebServices/PrepagoEcardVzla/ConsultarDevolucion"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WsEcardPrePagoHttpGet" type="tns:WsEcardPrePagoHttpGet">
+    <http:binding verb="GET"/>
+  </wsdl:binding>
+  <wsdl:binding name="WsEcardPrePagoHttpPost" type="tns:WsEcardPrePagoHttpPost">
+    <http:binding verb="POST"/>
+  </wsdl:binding>
+  <wsdl:service name="WsEcardPrePago">
+    <wsdl:port name="WsEcardPrePagoSoap" binding="tns:WsEcardPrePagoSoap">
+      <soap:address location="http://184.106.161.206:86/ws/WsEcardPrePago.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="WsEcardPrePagoSoap12" binding="tns:WsEcardPrePagoSoap12">
+      <soap12:address location="http://184.106.161.206:86/ws/WsEcardPrePago.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="WsEcardPrePagoHttpGet" binding="tns:WsEcardPrePagoHttpGet">
+      <http:address location="http://184.106.161.206:86/ws/WsEcardPrePago.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="WsEcardPrePagoHttpPost" binding="tns:WsEcardPrePagoHttpPost">
+      <http:address location="http://184.106.161.206:86/ws/WsEcardPrePago.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,51 @@
+{
+    "CABECERA": {
+        "codigo": "200",
+        "mensaje": "Transaccion Exitosa",
+        "farmacia": "17",
+        "documentoVenta": "10254381",
+        "ordenSfcc": "10252"
+    },
+    "FA_FACTURAS": {
+        "fecha": "5/17/21 16:23",
+        "numeroSRI": "020-029-001068169",
+        "costoTotalFactura": "13.68",
+        "pvpTotalFactura": "23.72",
+        "ventaTotalFactura": "23.24",
+        "valorIva": "0.24",
+        "usuario": "MSORTEGAC",
+        "primerApellido": "APCNV",
+        "segundoApellido": "ORELLANA",
+        "nombres": "NATCNV",
+        "identificacion": "1102073010",
+        "direccion": "AV. AMAZONAS & AVENIDA TOMÃ¡S DE BERLANGA"
+    },
+    "FA_DETALLES_FACTURA": [{
+            "codigo": "1",
+            "cantidad": "2",
+            "costo": "1.14",
+            "pvp": "1.79",
+            "precioFybeca": "1.72",
+            "venta": "1.75",
+            "unidades": "10",
+            "porcentajeIva": "0",
+            "item": "100074328"
+        },
+        {
+            "codigo": "2",
+            "cantidad": "10",
+            "costo": "1.14",
+            "pvp": "1.79",
+            "precioFybeca": "1.72",
+            "venta": "1.75",
+            "unidades": "10",
+            "porcentajeIva": "0",
+            "item": "100074328"
+        }
+    ],
+    "FA_DETALLES_FORMAS_PAGO": {
+        "formaPago": "E",
+        "pvpFactura": "23.72",
+        "ventaFactura": "23.24"
+    }
+}
